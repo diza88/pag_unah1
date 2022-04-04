@@ -1,0 +1,225 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 10px;
+    min-height: 100%;
+}
+
+.grid-container{
+    box-shadow: -1px 1px 7px 0px rgba(0, 0,0, 0.75);
+    border-radius: 4px;
+    text-align: center;
+}
+
+.header{
+    grid-area: header;
+    background-color: #8389E3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar{
+    grid-area: navbar;
+    background-color: rgb(107, 107, 107);
+}
+
+.sidebarL{
+    grid-area: sidebar;
+    background-color: #CCF8FC;
+}
+
+.main{
+    grid-area: main;
+    background-color: #CCDFFC;
+}
+
+.footer{
+    display: flex;
+    grid-area: footer;
+    background-color: rgb(50, 50, 50);
+    color: white;
+    font-size: 1.05rem;
+    
+    justify-content: space-around;
+}
+
+.foot-l{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+.grupo-uno{
+    font-size: 2.5rem;
+    color: white;
+    
+    
+}
+
+ul{
+    font-size: 1.05rem;
+    color: white;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+}
+
+.logo-UNAH{
+    width: 150px;
+    height: auto;
+}
+
+
+
+.nombres{
+    font-size: 0.8rem;
+}
+
+h2{
+    font-size: 1.8rem;
+}
+
+/*datos para una linea de tiempo en html*/
+
+.linea-tiempo{
+    position: relative;
+    /*width: 500px;*/
+    max-width: 95vw;
+    height: 100%;
+    padding: 5px;
+}
+
+.momento{
+    position: relative;
+    width: 45%;
+    box-sizing: border-box;
+}
+
+.momento:nth-child(even){
+    left: 55%;
+}
+/* ==> creacion de una linea central*/
+
+.linea-tiempo::before{
+    content: '';
+    position: absolute;
+    width: 3px;
+    background-color: #000;
+    right: 50%;
+    height: 96%;
+    border-radius: 10px;
+}
+
+.momento::after{
+    content: '';
+    position: absolute;
+    top: calc(50% + 10px);
+    right: calc(-11.11% - 11.5px);
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+    border-radius: 50%;
+}
+
+.momento:nth-child(even)::after{
+    left: calc(-14.1% );
+}
+
+/* ===> personalizacion linea central*/
+
+.year{
+    margin: 10px 0px;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.momento .descripcion{
+    background-color: #eee;
+    border-radius: 1rem;
+    padding: 1rem;
+    line-height: 1.2rem;
+    font-size: 0.8rem;
+
+}
+
+.momento .descripcion::after{
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: calc(50% + 10px);
+    height: 0;
+    width: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #eee;
+}
+
+.momento:nth-child(even) .descripcion{
+    background-color: #8389E3;
+    color: white;
+}
+
+.momento:nth-child(even) .descripcion::after{
+    left: -10px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 12px solid #8389E3;
+    border-left: none;
+    
+}
+
+
+
+
+/*contenido para dispositivos moviles*/
+.grid-container{
+    display: grid;
+    grid-template:
+    "header" 100px
+    "navbar" 50px
+    "main" auto 
+    "sidebar"  100px       
+    "footer" 100px;
+}
+
+
+/*contenido para tabletas*/
+
+@media (min-width: 600px){
+    .grid-container{       
+        grid-template:
+        "header header" 100px
+        "navbar navbar" 50px
+        "sidebar main" auto           
+        "footer footer" 100px /
+        200px auto;
+    }
+
+}
+
+/*contenido para computadoras*/
+@media (min-width: 900px){
+    .grid-container{        
+        grid-template:
+        "header header header" 100px
+        "sidebar main navbar" auto           
+        "footer footer footer" 100px /
+        200px auto 200px;
+    }
+
+}
+
+
